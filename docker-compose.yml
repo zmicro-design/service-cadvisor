@@ -1,0 +1,20 @@
+services:
+  cadvisor:
+    restart: always
+    image: whatwewant/cadvisor:${SERVICE_CADVISOR_IMAGE_VERSION}
+    # ports:
+    #   - 0.0.0.0:${SERVICE_CADVISOR_PORT}:8080
+    volumes:
+      - /:/rootfs:ro
+      - /var/run:/var/run
+      - /sys:/sys
+      - /var/lib/docker:/var/lib/docker
+      - /dev/disk:/dev/disk
+    privileged: true
+    devices:
+      - /dev/kmsg
+      
+networks:
+  default:
+    external: true
+    name: compose-ingress
