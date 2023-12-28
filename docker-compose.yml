@@ -13,6 +13,8 @@ services:
     privileged: true
     devices:
       - /dev/kmsg
+    mem_limit: 4096m
+    cpus: 2
       
 networks:
   default:
